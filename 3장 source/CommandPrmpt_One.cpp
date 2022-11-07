@@ -1,25 +1,26 @@
 /*
     CommandPrmpt_One.cpp
-    ÇÁ·Î±×·¥ ¼³¸í: ¸í·É ÇÁ·ÒÇÁÆ®ÀÇ °ñ°İ.
+    í”„ë¡œê·¸ë¨ ì„¤ëª…: ëª…ë ¹ í”„ë¡¬í”„íŠ¸ì˜ ê³¨ê²©.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <tchar.h>
 #include <windows.h> 
 
 #define STR_LEN    256
 #define CMD_TOKEN_NUM  10
 
 TCHAR ERROR_CMD[] 
- = _T("'%s'Àº(´Â) ½ÇÇàÇÒ ¼ö ÀÖ´Â ÇÁ·Î±×·¥ÀÌ ¾Æ´Õ´Ï´Ù. \n");
+ = _T("'%s'ì€(ëŠ”) ì‹¤í–‰í•  ìˆ˜ ìˆëŠ” í”„ë¡œê·¸ë¨ì´ ì•„ë‹™ë‹ˆë‹¤. \n");
 
 int CmdProcessing(void);
 TCHAR * StrLower(TCHAR *);
 
 int main(int agrc, TCHAR * argv[])
 {
-	// ÇÑ±Û ÀÔ·ÂÀ» °¡´ÉÄÉ ÇÏ±â À§ÇØ.
+	// í•œê¸€ ì…ë ¥ì„ ê°€ëŠ¥ì¼€ í•˜ê¸° ìœ„í•´.
 	_tsetlocale(LC_ALL, _T("Korean")); 
 	
 	DWORD isExit;
@@ -28,7 +29,7 @@ int main(int agrc, TCHAR * argv[])
 		isExit = CmdProcessing();
 		if(isExit == TRUE)
 		{
-			_fputts(_T("¸í·É¾î Ã³¸®¸¦ Á¾·áÇÕ´Ï´Ù. \n"), stdout );
+			_fputts(_T("ëª…ë ¹ì–´ ì²˜ë¦¬ë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤. \n"), stdout );
 			break;
 		}
 	}
@@ -46,7 +47,7 @@ int CmdProcessing(void)
 	_fputts( _T("Best command prompt>> "), stdout );
 	_getts(cmdString);
 
-	// tcstok (¹®ÀÚ¿­, °ª) °ªÀ¸·Î ¹®ÀÚ¿­À» ºĞ¸®½ÃÅ°´Â ¿ª ÇÒ  
+	// tcstok (ë¬¸ìì—´, ê°’) ê°’ìœ¼ë¡œ ë¬¸ìì—´ì„ ë¶„ë¦¬ì‹œí‚¤ëŠ” ì—­ í•   
 	TCHAR * token = _tcstok(cmdString, seps); 
 
 	int tokenNum = 0;
@@ -62,10 +63,10 @@ int CmdProcessing(void)
 	{
 		return TRUE;
 	}
-	else if ( !_tcscmp(cmdTokenList[0],_T("Ãß°¡ µÇ´Â ¸í·É¾î 1")) )
+	else if ( !_tcscmp(cmdTokenList[0],_T("ì¶”ê°€ ë˜ëŠ” ëª…ë ¹ì–´ 1")) )
 	{
 	}
-	else if ( !_tcscmp(cmdTokenList[0],_T("Ãß°¡ µÇ´Â ¸í·É¾î 2")) )
+	else if ( !_tcscmp(cmdTokenList[0],_T("ì¶”ê°€ ë˜ëŠ” ëª…ë ¹ì–´ 2")) )
 	{
 	}
 	else
